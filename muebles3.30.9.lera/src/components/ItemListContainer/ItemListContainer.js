@@ -1,15 +1,38 @@
 import {useState,useEffect}from 'react'
+import { traerProductos } from '../Item/products'
+import ItemList from './itemList';
 
 
-const ItemListContainer = ({item}) => {
-    const { name, precio,categoria}=item
-   
+const ItemListContainer = ({saludo}) => {
+    const [data,setData]=useState([])
+    const [loading,setLoading]=useState(true)
+    
+    useEffect(() => {
+        traerProductos.then ((resp) => {
+            setData(resp)
+        })
+        .catch((error)=>{
+        console.error(error)
+        })
+        .finally(()=>{
+            setLoading(false)
+        })
+
+    }, []);
+    
+     console.log(data) 
     return (
+      
         <div>
-            <h1>Bienvenido a Muebles 3.30.9.lera</h1>
-            <h1>{name}</h1>
-            <h1>{precio}</h1>
-            <h1>{categoria}</h1>
+            {loading ?(
+            <h3>loading...</h3>)
+            :( 
+               <> 
+             <h2 style={{textAlign:'center'}}>{saludo}</h2>
+            <ItemList products={data}/>
+             </>
+             ) }
+          
         </div>
 
 

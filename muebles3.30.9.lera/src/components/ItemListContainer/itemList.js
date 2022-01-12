@@ -1,23 +1,21 @@
-import {useState,useEffect} from 'react'
-import { getFetch } from '../Item/Item'
-const ItemList = () => {
-    const [productos,setProductos]=useState([])
+import React from 'react'
+import Item from '../Item/Item'
+import { products } from '../Item/products';
 
 
-    useEffect(()=>{
-       getFetch
-       .then
-       .catch(err=>console.log(err))
+function ItemList({ }) {
 
-    },[])
-    return (
-      
-          {productos.map(prod=><div
-                                key={prod.id}>
+  return (
+    <div style={{ display: 'flex' }}>
+      {products?.map((producto) => (
+        <Item key={producto.id} producto={producto} />
+      ))}
+    </div>
 
-        </div>
-    )
+  );
 }
+
+
 
 export default ItemList 
 

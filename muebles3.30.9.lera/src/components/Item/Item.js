@@ -1,14 +1,25 @@
-const productos = [
-    { id: 1, foto:'data : image/Ass'}
-]
+import React from 'react'
+import'./Item.css'
+import { Button } from 'react-bootstrap';
 
-export const getFetch = new Promise((resolve,reject)=>{
-    let condicion = true
-    if(condicion){
-        setTimeout(()=>{
-            resolve(productos)
-        },2000)
-    }else{
-        reject('error')
-    }
-})
+const Item = ({producto}) => {
+    console.log(producto);
+
+    return (
+        <div className='card'>
+           <h2>{producto.name}</h2>
+           <h3>Precio:{producto.precio}</h3>
+           <h3>Stock:{producto.stock}</h3>
+           <img src={producto.img} alt={producto.name}/>
+           <>
+ 
+  <Button variant="outline-secondary">Anadir carrito</Button>{' '}
+ 
+</>
+
+    
+        </div>
+    )
+}
+
+export default Item
