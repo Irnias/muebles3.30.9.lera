@@ -1,6 +1,7 @@
 import React from 'react'
 import'./Item.css'
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Item = ({producto}) => {
     console.log(producto);
@@ -11,11 +12,11 @@ const Item = ({producto}) => {
            <h3>Precio:{producto.precio}</h3>
            <h3>Stock:{producto.stock}</h3>
            <img src={producto.img} alt={producto.name}/>
-           <>
+           
  
-  <Button variant="outline-secondary">Anadir carrito</Button>{' '}
+  <Button variant="outline-secondary">Anadir carrito</Button>
  
-</>
+
 
     
         </div>
