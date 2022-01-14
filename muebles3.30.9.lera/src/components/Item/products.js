@@ -7,13 +7,6 @@ export const products = [
     { id: '6',name:'rack',categoria:'cocina',precio:1400,stock:'10', Img: 'Asst/muebles-1.jpg'}
 
 ]
-export const traerProductos = new Promise((resolve,reject)=>{
-    setTimeout(() => {
-        resolve(products)   
-    }, 2000);
-    
-
-})
 export const getMock  = new Promise((resolve,reject)=>{
     setTimeout(() => {
         resolve(products)   

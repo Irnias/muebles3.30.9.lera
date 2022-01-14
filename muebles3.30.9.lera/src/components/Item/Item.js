@@ -2,9 +2,12 @@ import React from 'react'
 import'./Item.css'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { products } from './products';
 
 const Item = ({producto}) => {
     console.log(producto);
+
+    const {id,imagen,desc,name,precio,categoria}=producto
 
     return (
         <div className='card'>

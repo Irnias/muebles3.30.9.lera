@@ -1,25 +1,25 @@
 import { useEffect,useState } from "react";
 import React from 'react'
-import { getMock, products, traerProductos } from "../Item/products";
+import { products, traerProductos } from "../Item/products";
 import ItemDetail from "./ItemDetail/ItemDetail";
+import {getMock} from "../Item/products";
 import { useParams } from "react-router-dom";
 
 export const ItemDetailContainer = () => {
-    const [ product, setProduct] = useState({})
+    const [ products, setProducts] = useState({})
 
- const{detalleId} = useParams()
+   const {detalleId} = useParams()
+    useEffect(()=>{
+        getMock
+        .then(res=>setProducts(res.find(products.id===detalleId)))
+    },[detalleId])
 
- useEffect(()=>{
-    getMock
-    .then(res=>setProduct(res.find(prod=>prod.id==='1')))
-},[detalleId])
-console.log(product)
 
 
 
     return (
         <>
-          <ItemDetail product={product}/>
+          <ItemDetail producto={products}/>
         </>
     )
 }

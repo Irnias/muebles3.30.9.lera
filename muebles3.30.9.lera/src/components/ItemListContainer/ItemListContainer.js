@@ -26,19 +26,7 @@ const ItemListContainer = ({saludo}) => {
     },[categoriaId])
     console.log(products)
     
-    useEffect(() => {
-        traerProductos.then ((resp) => {
-            setData(resp)
-        })
-        .catch((error)=>{
-        console.error(error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-
-    }, []);
-    
+  
      console.log(data) 
     return (
       
