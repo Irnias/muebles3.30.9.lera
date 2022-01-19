@@ -1,13 +1,13 @@
 import {useState,useEffect}from 'react'
-import { traerProductos } from '../Item/products'
 import ItemList from './itemList';
 import { getMock } from '../Item/products';
 import { useParams } from 'react-router-dom';
 
 
 
+
 const ItemListContainer = ({saludo}) => {
-    const [data,setData]=useState([])
+    
     const [loading,setLoading]=useState(true)
     const[products,setProducts]=useState([])
 
@@ -16,7 +16,7 @@ const ItemListContainer = ({saludo}) => {
     useEffect(()=>{
         if (categoriaId){
         getMock
-        .then(res=>setProducts(res.filter(prod=>prod.categoria===categoriaId)))
+        .then(answer=>setProducts(answer.filter(producto=>producto.categoria===categoriaId)))
         .finally(()=>setLoading(false))
         }else{
             getMock
@@ -24,19 +24,19 @@ const ItemListContainer = ({saludo}) => {
             .finally(()=>setLoading(false))
         }
     },[categoriaId])
-    console.log(products)
+    console.log('products',products)
+
     
-  
-     console.log(data) 
+    
     return (
       
         <div>
             {loading ?(
-            <h3>loading...</h3>)
+            <h3>Cargando...</h3>)
             :( 
                <> 
              <h2 style={{textAlign:'center'}}>{saludo}</h2>
-            <ItemList products={data}/>
+            <ItemList products={products}/>
              </>
              ) }
           

@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 import { products } from '../Item/products';
 
 
-function ItemList({ }) {
+function ItemList({products }) {
 
   return (
     <div style={{ display: 'flex' }}>

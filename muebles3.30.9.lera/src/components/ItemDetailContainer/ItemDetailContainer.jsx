@@ -1,17 +1,15 @@
 import { useEffect,useState } from "react";
-import React from 'react'
-import { products, traerProductos } from "../Item/products";
 import ItemDetail from "./ItemDetail/ItemDetail";
 import {getMock} from "../Item/products";
 import { useParams } from "react-router-dom";
 
 export const ItemDetailContainer = () => {
-    const [ products, setProducts] = useState({})
+    const [ product, setProduct] = useState({})
 
    const {detalleId} = useParams()
     useEffect(()=>{
         getMock
-        .then(res=>setProducts(res.find(products.id===detalleId)))
+        .then(res=>setProduct(res.find(producto=>producto.id===detalleId)))
     },[detalleId])
 
 
@@ -19,7 +17,10 @@ export const ItemDetailContainer = () => {
 
     return (
         <>
-          <ItemDetail producto={products}/>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+        
+          <ItemDetail product={product}/>
+        </div>
         </>
     )
 }

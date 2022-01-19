@@ -1,28 +1,31 @@
 import React from 'react'
 import'./Item.css'
-import { Button } from 'react-bootstrap';
+import {Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { products } from './products';
 
 const Item = ({producto}) => {
     console.log(producto);
 
-    const {id,imagen,desc,name,precio,categoria}=producto
+    const {id,img,name,precio,categoria}=producto
 
     return (
-        <div className='card'>
-           <h2>{producto.name}</h2>
-           <h3>Precio:{producto.precio}</h3>
-           <h3>Stock:{producto.stock}</h3>
-           <img src={producto.img} alt={producto.name}/>
-           
- 
-  <Button variant="outline-secondary">Anadir carrito</Button>
- 
-
+      
+       <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src={img} />
+  <Card.Body>
+    <Card.Title>{name}</Card.Title>
+    <Card.Text>
+   categoria:{categoria}
+    </Card.Text>
+    <Card.Text>
+        {precio}
+    </Card.Text>
+    <Link to={`/detalle/${id}`}><Button variant="primary">Ver Detalle</Button></Link>
+  </Card.Body>
+</Card>
 
     
-        </div>
     )
 }
 
