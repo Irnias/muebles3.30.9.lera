@@ -3,14 +3,14 @@ import { useState } from 'react'
 import ItemCounts from '../../ItemCounts/ItemCounts'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useCartContext } from '../../Navegacion/context/cartContext'
+import { UseCartContext } from '../../Navegacion/context/CartContext'
 
 
 
 
 const ItemDetail = ({product}) => {
 
-   const{agregaralcarrito} = useCartContext()
+   const{agregarAlCarrito} = UseCartContext()
 
 
 
@@ -19,8 +19,8 @@ const ItemDetail = ({product}) => {
     const {img,name,precio,categoria,stock}=product
 
     const onAdd=(contador)=>{
-      agregaralcarrito ({...product,contador} )
-      console.log(contador)
+      agregarAlCarrito ({...product,contador} )
+      console.log(show)
       setShow (false)
       alert
       (`${contador}`)
