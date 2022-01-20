@@ -16,21 +16,21 @@ export function UseCartContext() {
 
 export const CartContextProvider = ({children}) =>{
 //estados y funciones globales
-const [products,SetProducts] = ([])
+const [cartList,SetCarList] = ([])
 function agregarAlCarrito(Item) {
-    SetProducts([...products,Item])
+    SetCarList([...cartList,Item])
 
     
 }
 function vaciarCarrito() {
-    products([])
+    SetCarList([])
 
     
 
 }
 return(
     <CartContext.Provider value = {{
-        products,
+        cartList,
         agregarAlCarrito,
         vaciarCarrito
 
