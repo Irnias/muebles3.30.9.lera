@@ -1,28 +1,43 @@
-import { useState,useContext,createContext } from "react";
-//contexto creado
-const cartContext=createContex([]);
 
-//export function 
-export function usarContexto(){
-    return useContext(cartContext)
+import { useState,useContext,createContext } from "react";
+
+//creo el contexto
+const cartContext = createContext([])
+
+//funcion que evita importar el use context en todos los archivos
+export function useCartContext() {
+    
+    return useContext(createContext)
+
+    
 }
 
 
-//creo componente que maneja el contexto
+//creacion del componente que maneja el contexto
 
-export const cartContextProvider=({children})
-//estdos y funciones globales
- const [carlist, setCarlist] = useState([])
+export const cartContextProvider = ({children}) =>{
+//estados y funciones globales
+const [cartList,SetCarList] = ([])
+function agregaralcarrito(Item) {
+    SetCarList([...cartList,Item])
 
- function agregarAlcarrito(Item) {
-     setCarlist([])
-     
- }
+    
+}
+function vaciarCarrito() {
+    SetCarList([])
 
- return(
-      <cartContext.Provider value={{
-       carlist,
-       agregarAlcarrito,
-       vaciarCarrito>
- }}>
-     )
+    
+
+}
+return(
+    <cartContext.Provider value = {{
+        cartList,
+        agregaralcarrito,
+        vaciarCarrito
+
+    }}>
+        {children}
+
+    </cartContext.Provider>
+)
+}
