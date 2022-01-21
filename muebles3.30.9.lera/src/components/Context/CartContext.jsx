@@ -13,7 +13,7 @@ export function UseCartContext() {
 
 
 //creacion del componente que maneja el contexto
-const CartContextProvider = ({children}) =>{
+export const CartContextProvider = ({children}) =>{
 //estados y funciones globales
 const [cartList,SetCarList] = ([])
 function agregarAlCarrito(Item) {
@@ -40,4 +40,3 @@ return(
 )
 }
 
-export default CartContextProvider
