@@ -3,10 +3,7 @@ import { useState } from 'react'
 import ItemCounts from '../../ItemCounts/ItemCounts'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { UseCartContext } from '../../Navegacion/context/CartContext'
-
-
-
+import { UseCartContext } from '../../Context/CartContext'
 
 const ItemDetail = ({product}) => {
 
@@ -26,8 +23,6 @@ const ItemDetail = ({product}) => {
       (`${contador}`)
      
     }
-
-
 
     return (
         <div>
@@ -49,7 +44,7 @@ const ItemDetail = ({product}) => {
     <div>
     <Link to='cart'><button>Terminar la compra</button></Link>
     <Link to='/'><button>Comprar</button></Link>
-    <button onClick={()=> onAdd(2)}>Agregar al carrito</button>
+    <button onClick={()=> onAdd()}>Agregar al carrito</button>
 
     </div>}
 
