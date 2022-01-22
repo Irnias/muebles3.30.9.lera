@@ -1,55 +1,47 @@
-import React from 'react'
-import { useState } from 'react'
-import ItemCounts from '../../ItemCounts/ItemCounts'
-import { Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { UseCartContext } from '../../Context/CartContext'
-
-const ItemDetail = ({product}) => {
-
-   const{agregarAlCarrito} = UseCartContext()
+import { useContext,useState } from "react"
+import{Link} from 'react-router-dom';
+import {CartContext} from '../../Context/CartContext';
+import{ItemCounts} from '../../ItemCounts/ItemCounts';
 
 
+const ItemDetail = ({producto}) =>{
+  const [show,setShow] = useState(true);
+  const{addToCart} = useContext(CartContext);
 
-    const [show, setShow] = useState(true)
+  const onAdd = (contador)=>
+  addToCart(producto,contador);
+  setShow(false);
+};
 
-    const {img,name,precio,categoria,stock}=product
+return (
+  <>
+  <div className="conatinerDetail">
+    <img src={producto.img} alt={producto.name}/>
+    <div style={{height: '200px'}}>
+      <h3>{producto.name}</h3>
+      <h3>${producto.price}</h3>
+      {show ? (
+        <ItemCounts onAdd={onAdd} stock = {producto.name}/> 
+        ):
+        (<div style={{display: 'flex', flexDirection:'column'}}>
+         <Link to="/cart">
+           <button className="detail">
+             Ir al carrito
+           </button>
+         </Link>
 
-    const onAdd=(contador)=>{
-      agregarAlCarrito ({...product,contador} )
-      console.log(show)
-      setShow (false)
-      alert
-      (`${contador}`)
-     
-    }
+         <Link to="/">
+           <button className="detail">
+             volver al inicio 
+           </button>
+         </Link>
+        <div/>
+        )}
+    </div>
+  </div>
 
-    return (
-        <div>
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={img} />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            categoria:{categoria}
-          </Card.Text>
-          <Card.Text>
-              {precio}
-          </Card.Text>
-          
-        </Card.Body>
-      </Card>
-       
-    {show?<ItemCounts stock={stock} onAdd={onAdd} />:
-    <div>
-    <Link to='cart'><button>Terminar la compra</button></Link>
-    <Link to='/'><button>Comprar</button></Link>
-    <button onClick={()=> onAdd()}>Agregar al carrito</button>
+  </>
+ );
+};
 
-    </div>}
-
-      </div>
-    )
-}
-
-export default ItemDetail
+export default ItemDetail;      
