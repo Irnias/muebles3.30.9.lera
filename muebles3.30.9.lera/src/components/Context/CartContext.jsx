@@ -1,42 +1,54 @@
-import { useState,useContext,createContext } from "react";
+import React,{Children, createContext} from 'react';
+import {useState} from 'react';
 
-//creo el contexto
-const CartContext = createContext([])
+export const CartContext = createContext();
 
-//funcion que evita importar el use context en todos los archivos
-export function UseCartContext() {
 
-    return useContext(CartContext)
+export const addToCart = (Item,cantidad)=> {
+    if (isOnCart(Item.id)){
+        sumarCantidad(Item,cantidad);
+    }
+    else{
+        setCart(...cart,...[Item,cantidad]);
 
-    
+    }
+};
+
+const isOnCart = (id) =>{
+    const carrito = cart.some((prod) =>prod.id ===id);
+
+    return carrito;
 }
 
+const sumarCantidad = (Item,cantidad)=>{
+    const copia = [...cart];
+    copia.forEach((producto)=>{
+        producto.id === Item.id && (producto.cantidad += cantidad);
 
-//creacion del componente que maneja el contexto
-export const CartContextProvider = ({children}) =>{
-//estados y funciones globales
-const [cartList,SetCarList] = ([])
-function agregarAlCarrito(Item) {
-    SetCarList([...cartList,Item])
+    });
+};
 
-    
-}
-function vaciarCarrito() {
-    SetCarList([])
+const deletProd = (id) => {
+    setCart(cart.filter((producto) =>producto.id !== id));
+};
 
-    
+const vaciarCarrito = () =>{
+    setCart([])
+};
 
-}
-return(
-    <CartContext.Provider value = {{
-        cartList,
-        agregarAlCarrito,
-        vaciarCarrito
 
-    }}>
-        {children}
+const total = () =>{
+    let count = 0;
+    cart.forEach((producto)=>{
+        count +=producto.price * producto.cantidad;
+    });
+    return count;
+};
 
+return (
+    <CartContext.Provider
+    >
+        value = {{cart,addToCart,deletProd,vaciarCarrito,total}}
+        {Children}
     </CartContext.Provider>
 )
-}
-
