@@ -1,15 +1,19 @@
-import React,{Children, createContext} from 'react';
+import React,{createContext} from 'react';
 import {useState} from 'react';
 
 export const CartContext = createContext();
 
 
-export const addToCart = (Item,cantidad)=> {
+export const CartContextProvider = ({Children})=>{
+    const [cart,setCart] = useState([]);
+
+
+ const addToCart = (Item,cantidad)=> {
     if (isOnCart(Item.id)){
         sumarCantidad(Item,cantidad);
     }
     else{
-        setCart(...cart,...[Item,cantidad]);
+        setCart([...cart,{...Item,cantidad}]);
 
     }
 };
@@ -47,8 +51,11 @@ const total = () =>{
 
 return (
     <CartContext.Provider
-    >
-        value = {{cart,addToCart,deletProd,vaciarCarrito,total}}
+  
+        value = {{ cart,addToCart,deletProd,vaciarCarrito,total}} 
+     >
         {Children}
     </CartContext.Provider>
-)
+ );
+
+};

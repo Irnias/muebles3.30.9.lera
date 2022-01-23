@@ -1,27 +1,28 @@
 import { useContext,useState } from "react"
 import{Link} from 'react-router-dom';
 import {CartContext} from '../../Context/CartContext';
-import{ItemCounts} from '../../ItemCounts/ItemCounts';
+import ItemCounts from "../../ItemCounts/ItemCounts";
 
 
-const ItemDetail = ({producto}) =>{
+
+const ItemDetail = ({product}) =>{
   const [show,setShow] = useState(true);
   const{addToCart} = useContext(CartContext);
 
-  const onAdd = (count)=>
-  addToCart(producto,count);
+  const onAdd = (count)=>{
+  addToCart(product,count);
   setShow(false);
 };
 
 return (
   <>
       <div>
-          <img src={producto.img} alt={producto.name} />
+          <img src={product.img} alt={product.name} />
           <div style={{ height: '200px' }}>
-              <h3>{producto.name}</h3>
-              <h3>${producto.price}</h3>
+              <h3>{product.name}</h3>
+              <h3>${product.price}</h3>
               {show ? (
-                  <ItemCount onAdd={onAdd} stock={producto.stock} />
+                  <ItemCounts onAdd={onAdd} stock={product.stock} />
               ) : (
                   <div
                       style={{ display: 'flex', flexDirection: 'column' }}
@@ -42,7 +43,8 @@ return (
           </div>
       </div>
   </>
-);
+ );
 
+}
 
 export default ItemDetail;
