@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/cart/Cart';
-import {CartContextProvider} from './components/Context/CartContext'
+
 
 
 
@@ -13,7 +13,7 @@ import {CartContextProvider} from './components/Context/CartContext'
 function App() {
  
   return (
-    <CartContextProvider>
+ 
     <BrowserRouter>
    
     <NavBarBS/>
@@ -27,7 +27,7 @@ function App() {
    
 
     </BrowserRouter>
-    </CartContextProvider>
+
   );
 }
 
