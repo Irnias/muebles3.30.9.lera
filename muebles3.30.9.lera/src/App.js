@@ -15,8 +15,7 @@ function App() {
   return (
  
     <BrowserRouter>
-   
-    <NavBarBS/>
+     
     <Routes>
       <Route exact path='/'element={<ItemListContainer/>}/>
       <Route exact path='/categoria/:categoriaId'element={<ItemListContainer saludo='Bienvenido a Muebles3.30.9.lera'/>}/>
@@ -27,7 +26,7 @@ function App() {
    
 
     </BrowserRouter>
-
+   
   );
 }
 
