@@ -44,7 +44,7 @@ const vaciarCarrito = () =>{
 const total = () =>{
     let count = 0;
     cart.forEach((producto)=>{
-        count +=producto.price * producto.cantidad;
+        count +=producto.precio * producto.cantidad;
     });
     return count;
 };
