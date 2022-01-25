@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/cart/Cart';
-
+import {CartContextProvider} from './components/Context/CartContext'
 
 
 
@@ -13,9 +13,10 @@ import Cart from './components/cart/Cart';
 function App() {
  
   return (
- 
+    <CartContextProvider>
     <BrowserRouter>
-     
+   
+    <NavBarBS/>
     <Routes>
       <Route exact path='/'element={<ItemListContainer/>}/>
       <Route exact path='/categoria/:categoriaId'element={<ItemListContainer saludo='Bienvenido a Muebles3.30.9.lera'/>}/>
@@ -26,7 +27,7 @@ function App() {
    
 
     </BrowserRouter>
-   
+    </CartContextProvider>
   );
 }
 

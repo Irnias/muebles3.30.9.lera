@@ -5,6 +5,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext'
 import { useContext } from 'react'
+import Item from '../../Item/Item'
 
 
 const ItemDetail = ({product}) => {
@@ -20,7 +21,7 @@ const ItemDetail = ({product}) => {
 
     const onAdd=(contador)=>{
     
-      addToCart(product,contador)
+      addToCart(Item,contador)
       console.log(show)
       setShow (false)
 
@@ -39,14 +40,17 @@ const ItemDetail = ({product}) => {
           <Card.Text>
               {precio}
           </Card.Text>
+          <Card.Text>
+              stock:{stock}
+          </Card.Text>
           
         </Card.Body>
       </Card>
        
     {show?<ItemCounts stock={stock} onAdd={onAdd} />:
     <div>
-    <Link to='cart'><button>Terminar la compra</button></Link>
-    <Link to='/'><button>Comprar</button></Link>
+    <Link to='/'><button>Terminar la compra</button></Link>
+    <Link to='/cart'><button>Comprar</button></Link>
     
 
     </div>}
