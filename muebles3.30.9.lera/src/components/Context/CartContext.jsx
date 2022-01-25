@@ -8,26 +8,26 @@ export const CartContextProvider = ({children})=>{
     const [cart,setCart] = useState([]);
 
 
- const addToCart = (Item,cantidad)=> {
-    if (isOnCart(Item.id)){
-        sumarCantidad(Item,cantidad);
+ const addToCart = (item,cantidad)=> {
+    if (isOnCart(item.id)){
+        sumarCantidad(item,cantidad);
     }
     else{
-        setCart([...cart,{...Item,cantidad}]);
+        setCart([...cart,{...item,cantidad}]);
 
     }
 };
 
 const isOnCart = (id) =>{
-    const carrito = cart.some((prod) =>prod.id ===id);
+    const carrito = cart.some((producto) =>producto.id ===id);
 
     return carrito;
 }
 
-const sumarCantidad = (Item,cantidad)=>{
+const sumarCantidad = (item,cantidad)=>{
     const copia = [...cart];
     copia.forEach((producto)=>{
-        producto.id === Item.id && (producto.cantidad += cantidad);
+        producto.id === item.id && (producto.cantidad += cantidad);
 
     });
 };
@@ -42,11 +42,7 @@ const vaciarCarrito = () =>{
 
 
 const total = () =>{
-    let count = 0;
-    cart.forEach((producto)=>{
-        count +=producto.precio * producto.cantidad;
-    });
-    return count;
+    return cart.reduce((cantidad, producto)=> (cantidad + (producto.cantidad * producto.precio )) , 0)
 };
 
 return (
