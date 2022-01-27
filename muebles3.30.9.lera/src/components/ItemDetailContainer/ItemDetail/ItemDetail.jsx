@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext'
 import { useContext } from 'react'
-import Item from '../../Item/Item'
+
 
 
 const ItemDetail = ({product}) => {
@@ -19,9 +19,9 @@ const ItemDetail = ({product}) => {
 
     const {img,name,precio,categoria,stock}=product
 
-    const onAdd=(contador)=>{
+    const onAdd=(product,contador)=>{
     
-      addToCart(Item,contador)
+      addToCart(product,contador)
       console.log(show)
       setShow (false)
 
@@ -32,6 +32,7 @@ const ItemDetail = ({product}) => {
         <div>
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={img} />
+        <img src={img}/>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>

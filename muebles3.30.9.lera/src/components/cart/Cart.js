@@ -8,10 +8,11 @@ import { Button } from 'react-bootstrap';
 
 
 
-const Cart = (producto) => {
+
+const Cart = () => {
     
-    const {cart,deletProd,vaciarCarrito,total} = useContext(CartContext);
-    const {id,img,name,precio,categoria,stock}=producto
+    const {cart,deleteProd,vaciarCarrito,total} = useContext(CartContext);
+
     
   return( 
       <>
@@ -25,25 +26,25 @@ const Cart = (producto) => {
           <div key={producto.id}>
               <img src={producto.img}/>
               <div>
-                  <h3>{producto.name}</h3>
-                  <h3>${producto.precio}</h3>
+                  <h3>Nombre:{producto.name}</h3>
+                  <h3>${producto.total}</h3>
                   <h3>Cantidad: {producto.cantidad}</h3>
-                  <button onClick={() =>deletProd(producto.id)}> x</button>
+                  <button onClick={() =>deleteProd(producto.id)}> x</button>
                  <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={img} />
+        <Card.Img variant="top" src={producto.img} />
         <Card.Body>
-        <Card.Title>Nombre: {name}</Card.Title>
+        <Card.Title>Nombre: {producto.name}</Card.Title>
           <Card.Text>
-            categoria:{categoria}
+            categoria:{producto.categoria}
           </Card.Text>
           <Card.Text>
-              Precio : {precio}
+              Precio : {producto.precio}
           </Card.Text>
           Cantidad :{producto.cantidad}
           <Card.Text>
-              stock:{stock}
+              stock:{producto.stock}
           </Card.Text>
-          <Button onClick={() =>deletProd(producto.id)} variant="primary">x</Button>  
+          <Button onClick={() =>deleteProd(producto.id)} variant="primary">x</Button>  
         </Card.Body>
       </Card>
                 

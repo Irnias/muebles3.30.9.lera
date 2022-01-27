@@ -2,7 +2,7 @@ import React from 'react'
 import'./Item.css'
 import {Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { products } from './products';
+
 
 const Item = ({producto}) => {
     console.log(producto);
