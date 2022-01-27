@@ -1,7 +1,8 @@
 import {useState,useEffect}from 'react'
 import ItemList from './itemList';
 import { useParams } from 'react-router-dom';
-import  {getFirestore,getDocs,collection,where,query} from 'firebase/firestore'
+import  {doc,getFirestore,getDocs,collection,where,query} from 'firebase/firestore'
+import { products } from '../Item/products';
 
 
 
@@ -10,14 +11,15 @@ import  {getFirestore,getDocs,collection,where,query} from 'firebase/firestore'
 const ItemListContainer = ({saludo}) => {
     const [data,setData] = useState([]);
     const [loading,setLoading]=useState(true)
-    const[products,setProducts]=useState([])
+
+   
     const{id} =useParams();
-    const {categoriaId}=useParams()
+   
     
   useEffect(()=>{
      if (id) {
         const db= getFirestore();
-        const queryProducts =query( collection(db,'muebles3309lera'),where('categoria','==',id))
+        const queryProducts =query( collection(db,'Item'),where('categoria','==',id))
         getDocs(queryProducts)
         .then((res)=>setData(res.docs.map((prod)=>({ id: prod.id, ...prod.data() })))
         );
@@ -25,7 +27,7 @@ const ItemListContainer = ({saludo}) => {
          
      } else {
         const db= getFirestore();
-        const queryProducts = collection(db,'muebles3309lera')
+        const queryProducts = collection(db,'Item')
         getDocs(queryProducts)
         .then((res)=>setData(res.docs.map((prod)=>({ id: prod.id, ...prod.data() })))
         );
@@ -59,7 +61,8 @@ const ItemListContainer = ({saludo}) => {
 }
 
 export default ItemListContainer
-
+/* const {categoriaId}=useParams()*/
+/*
 /* useEffect(()=>{
         if (categoriaId){
         getMock

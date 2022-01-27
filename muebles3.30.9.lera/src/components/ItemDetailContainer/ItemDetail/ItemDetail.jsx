@@ -32,7 +32,6 @@ const ItemDetail = ({product}) => {
         <div>
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={img} />
-        <img src={img}/>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>

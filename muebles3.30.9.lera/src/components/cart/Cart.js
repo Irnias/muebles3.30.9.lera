@@ -24,7 +24,7 @@ const Cart = () => {
       {cart?.map((producto)=>(
 
           <div key={producto.id}>
-              <img src={producto.img}/>
+             
               <div>
                   <h3>Nombre:{producto.name}</h3>
                   <h3>${producto.total}</h3>
