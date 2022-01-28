@@ -23,9 +23,14 @@ const ItemListContainer = ({saludo}) => {
         const queryProducts =query( collection(db,'Item'),where('categoria','==',id))
         getDocs(queryProducts)
         .then((res)=>setData(res.doc.map((prod)=>({ id: prod.id, ...prod.data() })))
+        .catch(err=>err)
+        .finally(()=>setLoading(false))
         );
+
         setLoading(false);
-        console.log(data)
+       
+
+        
          
      } else {
         const db= getFirestore();

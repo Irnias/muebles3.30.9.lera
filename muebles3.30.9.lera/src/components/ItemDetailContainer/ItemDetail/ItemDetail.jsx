@@ -8,7 +8,7 @@ import { useContext } from 'react'
 
 
 
-const ItemDetail = ({product}) => {
+const ItemDetail = ({data}) => {
 
    
 
@@ -17,11 +17,11 @@ const ItemDetail = ({product}) => {
     const [show, setShow] = useState(true);
     const{addToCart}=useContext(CartContext);
 
-    const {img,name,precio,categoria,stock}=product
+    const {img,name,precio,categoria,stock}=data
 
-    const onAdd=(product,contador)=>{
+    const onAdd=(data,contador)=>{
     
-      addToCart(product,contador)
+      addToCart(data,contador)
       console.log(show)
       setShow (false)
 

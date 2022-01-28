@@ -7,11 +7,11 @@ export const products = [
     { id: '6',name:'rack',categoria:'cocina',precio:1400,stock:10, Img: 'https://res.cloudinary.com/dwtgydusj/image/upload/v1643251150/muebles3.30.9.lera/rack_brtc7c.jpg'}
 
 ]
-export const getMock  = new Promise((resolve,reject)=>{
+/*export const getMock  = new Promise((resolve,reject)=>{
     setTimeout(() => {
         resolve(products)   
     }, 2000);
     
 
-})
+})*/
 
