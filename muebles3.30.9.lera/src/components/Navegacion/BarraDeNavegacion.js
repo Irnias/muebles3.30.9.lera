@@ -6,6 +6,7 @@ import Cartwidget from './Cartwidget';
 import { Link } from 'react-router-dom';
 
 
+
 const NavBarBS = () => {
     return ( 
       <>

@@ -1,8 +1,8 @@
 import {useState,useEffect}from 'react'
 import ItemList from './itemList';
 import { useParams } from 'react-router-dom';
-import  {doc,getFirestore,getDocs,collection,where,query} from 'firebase/firestore'
-import { products } from '../Item/products';
+import  {getFirestore,getDocs,collection,where,query} from 'firebase/firestore'
+
 
 
 
@@ -12,19 +12,20 @@ import { products } from '../Item/products';
 const ItemListContainer = ({saludo}) => {
     const [data,setData] = useState([]);
     const [loading,setLoading]=useState(true)
-
+     
    
-    const{categoriaId} =useParams();
+    const{id} =useParams();
    
     
   useEffect(()=>{
-     if (categoriaId) {
+     if (id) {
         const db= getFirestore();
-        const queryProducts =query( collection(db,'Item'),where('categoria','==',categoriaId))
+        const queryProducts =query( collection(db,'Item'),where('categoria','==',id))
         getDocs(queryProducts)
         .then((res)=>setData(res.doc.map((prod)=>({ id: prod.id, ...prod.data() })))
         );
         setLoading(false);
+        console.log(data)
          
      } else {
         const db= getFirestore();
@@ -36,7 +37,7 @@ const ItemListContainer = ({saludo}) => {
          
          
      }
-  },[categoriaId]);
+  },[id]);
       
    
 
@@ -50,7 +51,7 @@ const ItemListContainer = ({saludo}) => {
             :( 
                <> 
              <h2 style={{textAlign:'center'}}>{saludo}</h2>
-            <ItemList products={products}/>
+            <ItemList products={data}/>
              </>
              ) }
           
