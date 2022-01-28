@@ -8,20 +8,21 @@ import { products } from '../Item/products';
 
 
 
+
 const ItemListContainer = ({saludo}) => {
     const [data,setData] = useState([]);
     const [loading,setLoading]=useState(true)
 
    
-    const{id} =useParams();
+    const{categoriaId} =useParams();
    
     
   useEffect(()=>{
-     if (id) {
+     if (categoriaId) {
         const db= getFirestore();
-        const queryProducts =query( collection(db,'Item'),where('categoria','==',id))
+        const queryProducts =query( collection(db,'Item'),where('categoria','==',categoriaId))
         getDocs(queryProducts)
-        .then((res)=>setData(res.docs.map((prod)=>({ id: prod.id, ...prod.data() })))
+        .then((res)=>setData(res.doc.map((prod)=>({ id: prod.id, ...prod.data() })))
         );
         setLoading(false);
          
@@ -35,7 +36,7 @@ const ItemListContainer = ({saludo}) => {
          
          
      }
-  },[id]);
+  },[categoriaId]);
       
    
 
